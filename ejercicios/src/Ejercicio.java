@@ -54,7 +54,7 @@ public class Ejercicio {
         lecturaTeclado.close();
     }
 
-    /*EJERCICIO 2: Hágase un programa que convierta segundos en horas, minutos y segundos.*/
+    /*EJERCICIO 4: Hágase un programa que convierta segundos en horas, minutos y segundos.*/
     public void ejercicio4(){
         lecturaTeclado = new Scanner(System.in);
         //1. pedir datos
@@ -81,5 +81,11 @@ public class Ejercicio {
 
 
     }
+
+    /*
+    * Permítase introducir el valor con IVA de una compra con dos decimales (la
+    * compra no puede ser superior a 500€ ni inferior a 0€) y el valor del IVA de dicha
+    * compra (valor entero entre 0 y 25%).¿Cuánto costó la compra sin IVA?¿Cuánto fue
+    * el IVA? Muéstrese los resultados redondeados a dos decimales. (Compra) */
 
 }
