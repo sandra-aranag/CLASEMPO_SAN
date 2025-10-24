@@ -4,7 +4,9 @@ public class Main {
 
         Ejercicio ejercicio = new Ejercicio();
         //ejercicio.ejercicio1();
-        ejercicio.ejercicio4();
+        //ejercicio.ejercicio4();
+        //ejercicio.ejercicio2();
+        ejercicio.ejercicio3();
 
 
 

@@ -82,10 +82,62 @@ public class Ejercicio {
 
     }
 
-    /*
+    /* EJERCICIO 2:
     * Permítase introducir el valor con IVA de una compra con dos decimales (la
     * compra no puede ser superior a 500€ ni inferior a 0€) y el valor del IVA de dicha
     * compra (valor entero entre 0 y 25%).¿Cuánto costó la compra sin IVA?¿Cuánto fue
     * el IVA? Muéstrese los resultados redondeados a dos decimales. (Compra) */
 
+    public void ejercicio2(){
+        lecturaTeclado = new Scanner(System.in);
+
+        System.out.println("Introduce el valor de la compra (entre 0.00 y 500.000)");
+        double valorCompra = lecturaTeclado.nextDouble();
+        System.out.println("Introduce el valor del IVA (entre 0 y 25%)");
+        int valorIva = lecturaTeclado.nextInt();
+        double iva = (valorIva*valorCompra)/100;
+        double compra = valorCompra-iva;
+        System.out.printf("El valor de la compra sin IVA es %.2f%n",compra);
+        System.out.printf("El valor del IVA es %.2f%n",iva);
+
+        lecturaTeclado.close();
+        lecturaTeclado=null; //para borrar memoria.
+
+
+    }
+
+    /*EJERCICIO 3: Se introducen los 5 dígitos de un número (decenas de mil, unidades de mil,
+centenas, decenas y unidades), y se obtiene el número correspondiente.
+(Numero) */
+
+    public void ejercicio3(){
+
+        lecturaTeclado = new Scanner(System.in);
+
+        System.out.println("Indica un numero de 5 digitos");
+        int numeroAnalizar = lecturaTeclado.nextInt();
+
+        if (numeroAnalizar>9999 && numeroAnalizar<100000){
+            int decenasMil = numeroAnalizar/10000;
+            int unidadesMil = (numeroAnalizar%10000)/1000;
+            int centenas = ((numeroAnalizar%10000)%1000)/100;
+            int decenas = (((numeroAnalizar%10000)%1000)%100)/10;
+            int unidades = (((numeroAnalizar%10000)%1000)%100)%10;
+            System.out.println("Las decenas de mil son "+decenasMil);
+            System.out.println("Las unidades de mil son "+unidadesMil);
+            System.out.println("Las centenas: " +centenas);
+            System.out.println("Las decenas: "+decenas);
+            System.out.println("Las unidades "+unidades);
+        } else {
+            System.out.println("Numero incorrecto");
+        }
+
+        lecturaTeclado.close();
+        lecturaTeclado=null; //para borrar memoria.
+
+    }
+
+
+
 }
+
