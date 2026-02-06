@@ -2,13 +2,12 @@ package controller;
 
 import model.Alumno;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.OptionalDouble;
+import java.util.*;
+import java.util.function.BiPredicate;
 
 public class Gestor {
 
-    private ArrayList<Alumno> alumnos;
+    private List<Alumno> alumnos;
     private HashMap<String, Alumno> alumnosMap;
 
     public Gestor(){
@@ -70,5 +69,45 @@ public class Gestor {
         OptionalDouble media = alumnos.stream().mapToDouble(Alumno::getNota).average();
         System.out.println(media.getAsDouble());
     }
+
+    //El número de usuarios que han aprobado
+
+    public long getNumeroAprobados() {
+        //recorro, pregunto, incremento
+        /*int nAP=0;*/
+        /*for (Alumno alumno: alumnos) {
+            if (alumno.getNota()>=5){
+                nAP++;
+            }
+        }
+        return nAP;*/
+
+       return alumnos.stream().filter(item -> item.getNota() > 4).count();
+
+    }
+
+    public ArrayList<Alumno> getAprobados(){
+        //recorrro, pregunto y añadi list
+        return (ArrayList<Alumno>) alumnos.stream()
+                .filter(item->item.getNota()>=5).toList();
+    }
+
+    public Optional<Alumno> getAlumnoByDni(String dni){
+
+        return alumnos.stream().filter(item->item.getDni().equals(dni)).findFirst();
+    }
+
+    public void ordenarNotas(){
+       alumnos = alumnos.stream().sorted(Comparator.comparingInt(Alumno::getNota)).toList();
+    }
+
+    public void getAlumnosUmbral(int nota){
+        alumnos.stream().filter(item-> item.getNota()>=nota).forEach(Alumno::mostrarDatos);
+    }
+
+    public void getAlumnosUmbral(BiPredicate<Alumno, Integer> predicate, int nota){
+        alumnos.stream().filter(item->predicate.test(item,nota)).forEach(Alumno::mostrarDatos);
+    }
+
 
 }
